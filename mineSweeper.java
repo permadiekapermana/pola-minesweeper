@@ -3,37 +3,49 @@ import java.util.Scanner;
 public class mineSweeper {
     public static void main(String[] args) {
                 
-        int i, m, n;
-        System.out.println("Masukan Jumlah Baris : ");
-        Scanner inputan = new Scanner(System.in);
-        m = inputan.nextInt();
+        String input1 = "...";
+        String input2 = ".*.";
+        String input3 = ".**";
+        String input4 = ".*.";
+        String input5 = "***";
 
-        System.out.println("Masukan Jumlah Kolom : ");
-        Scanner inputan2 = new Scanner(System.in);
-        n = inputan2.nextInt();
-               
+        String[] i1 = input1.split("");
+        String[] i2 = input2.split("");
+        String[] i3 = input3.split("");
+        String[] i4 = input4.split("");
+        String[] i5 = input5.split("");
 
-        if (m>100 || n>100) {
-            System.out.println("Jumlah baris atau kolom tidak boleh lebih dari 100!");
-        }
-        else {
-            Scanner inputan3 = new Scanner(System.in);
-            String[] input = new String[n];
-            System.out.println();
-            System.out.println("Masukkan pola, gunakan titik (.) untuk menuliskan angka dan bintang (*) untuk menuliskan bom. Jumlah pola per baris tidak boleh lebih dari " + m + "karakter. Dan jumlah pola per kolom tidak boleh lebih dari " + n + "karakter");
-            for (i=0; i<m; i++){                    
-                    input[i] = inputan3.nextLine();
+        String[][] huruf = {i1, i2, i3, i4, i5};
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (huruf[i][j].equals(".")){
+                    if (j+1 <huruf[i].length && i+1 <huruf[j].length) {
+                        if (huruf[i][j+1].equals("*")){
+                            System.out.print("1 ");
+                        } else if (huruf[i-1][j+1].equals("*")){
+                            System.out.print("1 ");
+                        } else if (huruf[i+1][j+1].equals("*")){
+                            System.out.print("1 ");
+                        } else if (huruf[i+1][j].equals("*")){
+                            System.out.print("1 ");
+                        } else if (huruf[i+1][j-1].equals("*")){
+                            System.out.print("1 ");
+                        } else if (huruf[i][j-1].equals("*")){
+                            System.out.print("1 ");
+                        } else if (huruf[i-1][j-1].equals("*")){
+                            System.out.print("1 ");
+                        } else if (huruf[i-1][j].equals("*")){
+                            System.out.print("1 ");
+                        } else {
+                            System.out.print(huruf[i][j]+ " ");
+                        }
+                    }
+                } else if (huruf[i][j].equals("*")) {
+                    System.out.print(huruf[i][j]+ " ");
+                }
             }
             System.out.println();
-            System.out.println("Hasil :");
-            for (i=0; i<m; i++) {
-                if (input[i]=="*") {
-                    System.out.println("*");
-                }
-                else {
-                    System.out.println(input[i]);
-                }
-            }
         }
 
     }
