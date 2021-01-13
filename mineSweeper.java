@@ -35,52 +35,56 @@ public class mineSweeper {
         for (int i=0; i<huruf.length; i++) {
             for (int j=0; j<huruf[i].length; j++) {
                 if (huruf[i][j].equals(". ")) {
-                    if (j<2) {
+                    if ((j+1) < huruf[i].length) {
                         if (huruf[i][j+1].equals("* ")){
                             kanan++;
                             jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
                         }
                     }
-                    if (i<5 && i>=0) {
+                    if (i+1<huruf.length && i>=1) {
                         if (huruf[i+1][j].equals("* ")) {
                             bawah++;
                             jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
                         }
                     }
-                    if (i>1) {
+                    if (i>0) {
                         if (huruf[i-1][j].equals("* ")) {
                             atas++;
                             jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
                         }
                     }
-                    if (j>=1) {
+                    if (j>0) {
                         if (huruf[i][j-1].equals("* ")) {
                             kiri++;
                             jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
                         }
                     }
-                    if (i>=1 && j>0) {
+                    if (i>0 && j>0) {
                         if (huruf[i-1][j-1].equals("* ")) {
                             atasKiri++;
                             jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
                         }
                     }
-                    if (i>=1 && j<2) {
-                        if (huruf[i-1][j+1].equals("* ")) {
-                            atasKanan++;
-                            jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
+                    if (i>0) {
+                        if ((j+1) < huruf[i-1].length){
+                            if (huruf[i-1][j+1].equals("* ")) {
+                                atasKanan++;
+                                jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
+                            }
                         }
                     }
-                    if (j>=1 && i<=3) {
+                    if ((i+1) < huruf.length && j > 0) {
                         if (huruf[i+1][j-1].equals("* ")) {
                             bawahKiri++;
                             jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
                         }
                     }
-                    if (j<2 && i<4) {
-                        if (huruf[i+1][j+1].equals("* ")) {
-                            bawahKanan++;
-                            jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
+                    if ((i+1) < huruf.length) {
+                        if ((j+1) < huruf[i+1].length) {
+                            if (huruf[i+1][j+1].equals("* ")) {
+                                bawahKanan++;
+                                jumlah = atas+kiri+bawah+kanan+atasKiri+atasKanan+bawahKiri+bawahKanan;
+                            }
                         }
                     }
                     System.out.print(jumlah+ " ");
